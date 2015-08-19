@@ -1,16 +1,18 @@
 <?php
+// http://localhost/tuberculosisCELMIRA/web/index.php?modulo=default&accion=index
+try {
+  session_start();
 
-$GLOBALS['timeIni'] = microtime(true);
-session_name('mvcSite');
-session_start();
-ob_start();
+  $modulo = filter_input(INPUT_GET, 'modulo');
+  $accion = filter_input(INPUT_GET, 'accion');
 
-if (is_file('../config/config.php') !== true) {
-  include_once '../installer/installerClass.php';
-  $installer = new installerClass();
-  $installer->install();
-} else {
-  include_once __DIR__ . '/../libs/vendor/autoLoadClass.php';
-  mvc\autoload\autoLoadClass::getInstance()->autoLoad();
-  mvc\dispatch\dispatchClass::getInstance()->main();
+  include '../app/' . $modulo . '/controller/' . $accion . 'Class.php';
+  $accionClass = $accion . 'Class';
+
+  $controller = new $accionClass();
+  $controller->$accion();
+} catch (PDOException $exc) {
+  echo $exc->getTraceAsString();
+} finally {
+  unset($_SESSION['view']);
 }

@@ -1,1 +1,0 @@
-<a class="btn btn-primary btn-lg">Hola</a>
