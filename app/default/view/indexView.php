@@ -15,6 +15,8 @@
     </ol>
     <pre>
     <?php print_r($_SESSION['view']['objUsuario']) ?>
+
+    <?php print_r($_SESSION['view']['objUsuarioPuntual']) ?>
     </pre>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -12,7 +12,11 @@ try {
   $controller = new $accionClass();
   $controller->$accion();
 } catch (PDOException $exc) {
-  echo $exc->getTraceAsString();
+  echo '<pre>';
+  print_r($exc->getMessage());
+  echo "<hr>";
+  print_r($exc->getTrace());
+  echo '</pre>';
 } finally {
   unset($_SESSION['view']);
 }
