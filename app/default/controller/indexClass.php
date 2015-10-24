@@ -15,7 +15,7 @@ class indexClass {
   public function index() {
     $_SESSION['view']['mensaje'] = 'Hola mundo';
     
-    modelClass::insertUsuario('andres', md5('sqlx32'));
+    //modelClass::insertUsuario('andres', md5('sqlx32'));
     
     $objUsuario = modelClass::getAllUsuario();
     $_SESSION['view']['objUsuario'] = $objUsuario;
